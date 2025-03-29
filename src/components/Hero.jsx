@@ -9,7 +9,7 @@ const Hero = ({ searchQuery }) => {
     useEffect(() => {
         const fetchBooks = async () => {
             try {
-                setLoading(true);
+                setLoading(false)
                 const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(searchQuery)}&maxResults=35&key=AIzaSyAtZxon2bKZvQUnvW-n1KSxScTAa9cLO3I`)
                 if (!response.ok) throw new Error('Failed to fetch');
                 const data = await response.json();
@@ -112,12 +112,33 @@ const Hero = ({ searchQuery }) => {
                                     <div className='relative aspect-[4/5] w-full rounded-xl md:rounded-2xl overflow-hidden bg-gradient-to-br from-cyan-400/10 to-blue-400/10'>
                                         <img src={book.imageUrl || getPlaceholder(book.title)} alt={book.title}
                                             className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-300'
-                                            style={{imageRendering:'-webkit-optimize-contrast'}}
-                                             />
+                                            style={{ imageRendering: '-webkit-optimize-contrast' }}
+                                            onError={(e) => (e.target.src = getPlaceholder(book.title))} />
+                                        <div className='absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent' />
+                                        <div className='absolute bottom-0 left-0 right-0 p-2 md:p-4 bg-gradient-to-t from-gray-900/90 to-transparent'>
+                                            <span className='text-xs md:text-sm font-medium text-cyan-300'>
+                                                {book.printType}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div className='mt-4 md:mt-6'>
+                                        <h3 className=' text-lg md:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400'>
+                                            {book.title}
+                                        </h3>
+                                        <p className=' text-gray-400 mt-1 md:mt-2 text-sm md:text-base'>
+                                            {book.authors}
+                                        </p>
+                                     </div>
+                                        
+                                        <span className=' text-gray-400 mt-1 md:mt-2 text-sm md:text-base'>
+                                            {book.rating}
+                                        </span>
 
                                     </div>
                                 </div>
-                            </div>
+                            
+
+
                         )
                     })}
                 </div>
