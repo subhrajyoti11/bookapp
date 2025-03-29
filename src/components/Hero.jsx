@@ -128,21 +128,82 @@ const Hero = ({ searchQuery }) => {
                                         <p className=' text-gray-400 mt-1 md:mt-2 text-sm md:text-base'>
                                             {book.authors}
                                         </p>
-                                     </div>
-                                        
-                                        <span className=' text-gray-400 mt-1 md:mt-2 text-sm md:text-base'>
-                                            {book.rating}
-                                        </span>
+                                    </div>
 
+                                    <span className=' text-gray-400 mt-1 md:mt-2 text-sm md:text-base'>
+                                        {book.rating}
+                                    </span>
+                                    <div className="grid grid-cols-2 gap-2 md:mt-4 text-xs md:text-sm">
+                                        <div className=" flex items-center space-x-1 md:space-x-2">
+                                            <span className="text-gray-400">
+                                                Pages:
+                                            </span>
+                                            <span className="text-cyan-300">
+                                                {book.pageCount}
+                                            </span>
+                                        </div>
+
+                                        <div className=" flex items-center space-x-1 md:space-x-2">
+                                            <span className="text-gray-400">
+                                                Format:
+                                            </span>
+                                            <span className="text-purple-300">
+                                                {book.printType}
+                                            </span>
+                                        </div>
+
+                                        <div className=" flex items-center space-x-1 md:space-x-2">
+                                            <span className="text-gray-400">
+                                                Rating:
+                                            </span>
+                                            <span className="text-blue-300">
+                                                {book.ratingsCount}
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div className='mt-2 md:mt-4 flex flex-wrap gap-1 md:gap-2'>
+                                        {book.categories.split(',').slice(0, 3).map((category, index) => (
+                                            <span key={index} className='px-2 py-1 md:px-3 md:py-1 rounded-full bg-gray-700/50 text-xs text-cyan-300 backdrop-blur-sm'>
+                                                {category.trim()}
+                                                {index === 2 && book.categories.split(',').length > 3 && (
+                                                    <span className='ml-1 text-gray-400'>
+                                                        +{book.categories.split(',').length - 3}
+                                                    </span>
+                                                )}
+                                            </span>
+                                        ))}
                                     </div>
                                 </div>
-                            
-
+                                <div className='absolute inset-0 rounded-xl md:rounded-2xl bg-gradient-to-br from-cyan-400/20 opacity-0 group-hover:opacity-30 transition-opacity duration-300 pointer-events-none' />
+                            </div>
 
                         )
                     })}
                 </div>
-            </div>
+                <div className='mt-6 md:mt-8 flex flex-wrap justify-center items-center gap-2 md:gap-3'>
+                    <button onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                        disabled={currentPage === 1}
+                        className='px-3 py-1 md:px-4 md:py-2 rounded-md md:rounded-lg border border-gray-700/50 bg-gray-900/80 text-cyan-300 text-xs md:text-sm disabled:opacity-50 hover:bg-gray-900/60 transition-colors'>
+                        Previous
+                    </button>
+                    {generatePageNumber().map((page, index) => (
+                        <button key={index} onClick={() => setCurrentPage(page)}
+                            className={`px-3 py-1 md:px-4 md:py-2 rounded-md md:rounded-lg text-xs md:text-sm ${page === currentPage
+                                ? 'bg-cyan-400/30 text-cyan-300'
+                                : 'bg-gray-900/80 text-cyan-300 hover:bg-gray-900/60'
+                                }`}>
+                            {page}
+                        </button>
+                    ))}
+                    <button onClick={() => setCurrentPage(p => Math.max(totalPages, p + 1))}
+                        disabled={currentPage === totalPages}
+                        className='px-3 py-1 md:px-4 md:py-2 rounded-md md:rounded-lg border border-gray-700/50 bg-gray-900/80 text-cyan-300 text-xs md:text-sm disabled:opacity-50 hover:bg-gray-900/60 transition-colors'>
+                        Next
+                    </button>
+                </div>
+
+            </div >
         </div >
     );
 }
