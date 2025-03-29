@@ -30,7 +30,7 @@ useEffect(()=>{
 window.scrollTo(0,0);
 },[])
   return (
-    <nav className='sticky top-0 z-50 bg-gray-900/95 backdrop-blur-2xl border-b border-b-gray-800 shadow-[0_0_-15px_rgba(95,165,250,0.3)]'>
+    <nav className='sticky top-0 z-50 bg-gray-900/95 backdrop-blur-2xl border-b border-gray-800 shadow-[0_0_-15px_rgba(95,165,250,0.3)]'>
       <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
        <div className='flex min-h-[4rem] md:min-h-[5rem] items-center justify-between flex-wrap gap-y-3 gap-x-4 py-2'>
        {/*logo section */}
@@ -47,7 +47,7 @@ window.scrollTo(0,0);
          <h1 className='text-lg md:text-2xl front-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-pink-400 bg-clip-text text-transparent animate-text-shine'>
          <BookOpenIcon className=" h-5 w-5 md:h-6 md:w-6 inline-block animate-float text-cyan-400 mr-1 md:mr-2 stroke-[2.5]" />
          <a href="/" className=' ml-1 md:ml-2 text-shadow-[0_0_10px_rgba(96,165,250,0.5)]'>
-         BOOKSHOW</a>
+         BookSphere</a>
          </h1>
         </div>
        </div>
