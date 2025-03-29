@@ -34,7 +34,8 @@ const Banner = () => {
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.3 }}
                         className='text-lg text-cyan-100/80'>
-                        Explore our collection with dynamic previews and immersive interaction
+                        Explore our collection with dynamic previews and immersive interaction.
+                        Discover a world of books with our intuitive and engaging platform. Browse through a wide range of genres, from fiction to academic works. Enjoy dynamic previews and personalized recommendations tailored to your interests. Connect with fellow readers and share your insights. Experience seamless navigation and quick access to your favorite titles. Start exploring today and unlock endless possibilities!
                     </motion.p>
                 </div>
     
